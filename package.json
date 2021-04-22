@@ -1,0 +1,15 @@
+{
+  "name": "02-homework",
+  "version": "1.0.0",
+  "description": "Team profile generator",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "node index.js"
+  },
+  "author": "Nadia Dorado",
+  "license": "ISC",
+  "dependencies": {
+    "inquirer": "^8.0.0"
+  }
+}

@@ -63,7 +63,7 @@ npm i jest
 ## Usage
 
 - Link to a walkthrough video that demonstrates its functionality:
-  -
+  - Video link: https://vimeo.com/541192347
 
 ### Steps to generated the web page:
 

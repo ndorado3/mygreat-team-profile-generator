@@ -5,9 +5,11 @@ const generateProfile = require("./generateProfile");
 const Manager = require("./lib-classes/Manager");
 const Engineer = require("./lib-classes/Engineer");
 const Intern = require("./lib-classes/Intern");
-const Employee = require("./lib-classes/Employee");
+// const Employee = require("./lib-classes/Employee");
+// const generateProfileHTML = require("./generateProfile");
 
-let teamArray = [];
+let arrayTeam = [];
+let team = ``;
 
 //main menu questions it prompts at the end of engineer & intern
 function mainMenu() {
@@ -31,9 +33,23 @@ function mainMenu() {
         console.log("Please enter Intern information");
         getIntern();
       } else if (answers.employeeType === "I am finish building my team") {
-        console.log("finish with form");
+        finalHTLM();
+        console.log("Your Team profile page was successfully created!");
       }
     });
+}
+
+//creates the html page 
+async function finalHTLM() {
+  for (let i = 0; i < arrayTeam.length; i++) {
+    team = team + generateProfile.generateTeamCards(arrayTeam[i]);
+  }
+  let generatedHTML = generateProfile.generateProfileHTML(team);
+  fs.writeFileSync("./output/index.html", generatedHTML, (err) =>
+    err
+      ? console.error(err)
+      : console.log("Your Team's Profile page is ready to view")
+  );
 }
 
 //Prompts and array with manager questions
@@ -63,7 +79,7 @@ function getManager() {
       },
     ])
     .then((answers) => {
-      teamArray.push(
+      arrayTeam.push(
         new Manager(
           answers.name,
           answers.id,
@@ -71,7 +87,7 @@ function getManager() {
           answers.officeNumber
         )
       );
-      console.log(teamArray);
+      console.log(arrayTeam);
       mainMenu();
     });
 }
@@ -83,34 +99,33 @@ function getEngineer() {
       {
         type: "input",
         message: "What is the Engineer's name?",
-        name: "engineerName",
+        name: "name",
       },
       {
         type: "input",
         message: "What is the Engineer's employee ID?",
-        name: "engineerID",
+        name: "id",
       },
       {
         type: "input",
         message: "What is the Engineer's email?",
-        name: "engineerEmail",
+        name: "email",
       },
       {
         type: "input",
         message: "What is the Engineer's Github username?",
-        name: "engineerGithub",
+        name: "github",
       },
     ])
     .then((answers) => {
-      teamArray.push(
+      arrayTeam.push(
         new Engineer(
-          answers.engineerName,
-          answers.engineerID,
-          answers.engineerEmail,
-          answers.ngineerGithub
-        )
+          answers.name, 
+          answers.id, 
+          answers.email, 
+          answers.github)
       );
-      console.log(teamArray);
+      console.log(arrayTeam);
       mainMenu();
     });
 }
@@ -122,34 +137,29 @@ function getIntern() {
       {
         type: "input",
         message: "What is the Intern's name?",
-        name: "internName",
+        name: "name",
       },
       {
         type: "input",
         message: "What is the Intern's ID?",
-        name: "internID",
+        name: "id",
       },
       {
         type: "input",
         message: "What is the Intern's email?",
-        name: "internEmail",
+        name: "email",
       },
       {
         type: "input",
         message: "What is the Intern's School?",
-        name: "internSchool",
+        name: "school",
       },
     ])
     .then((answers) => {
-      teamArray.push(
-        new Intern(
-          answers.internName,
-          answers.internID,
-          answers.interEmail,
-          answers.internSchool
-        )
+      arrayTeam.push(
+        new Intern(answers.name, answers.id, answers.email, answers.school)
       );
-      console.log(teamArray);
+      console.log(arrayTeam);
       mainMenu();
     });
 }

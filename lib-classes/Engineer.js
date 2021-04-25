@@ -1,23 +1,17 @@
-class Engineer {
-    constructor(name, id, email) {
-      this.name = name;
-      this.id = id;
-      this.email = email;
-    }
-    getName(){
-      return this.name
-    };
-    getId(){
-      return this.id
-    };
-    getEmail(){
-      return this.email
-    };
-    getRole(){
-      return `Engineer`
-    };
-  
+// Engineer class
+//It has access to Employee methods
+const Employee = require("./Employee");
+
+class Engineer extends Employee {
+  constructor(name, id, email, github) {
+    super(name, id, email);
+    this.title = "Engineer";
+    this.github = github;
   }
-  
-  
-  module.exports = Engineer
+
+  getGithub() {
+    return this.github;
+  }
+}
+
+module.exports = Engineer;

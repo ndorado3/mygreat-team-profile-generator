@@ -1,5 +1,4 @@
-function generateProfileHTML(team) {
-  return `<!DOCTYPE html>
+<!DOCTYPE html>
     <html lang="en">
     
     <head>
@@ -24,44 +23,52 @@ function generateProfileHTML(team) {
         <div class="container">
             <div class="row">
                 <div class="team-area col-12 d-flex justify-content-center">
-                ${team}
+                
+  <div class="card">
+<div class="card-header">
+    <h2>Nadia </h2>  
+    <h2><i class="far fa-user"></i> Manager</h2>
+    <hr>
+</div>
+<div class="card-body">
+    <ul>
+        <li>ID: 1</li>
+        <li>Email: nadia@gmail.com</li>
+        <li>Office Number: 133-456-789 </li>
+    </ul>
+</div>
+</div>
+  <div class="card">
+<div class="card-header">
+    <h2>Alex</h2>  
+    <h2><i class="far fa-user"></i> Engineer</h2>
+    <hr>
+</div>
+<div class="card-body">
+    <ul>
+        <li>ID: 2</li>
+        <li>Email: alex@gmail.com</li>
+        <li>Github Username: alex3 </li>
+    </ul>
+</div>
+</div>
+  <div class="card">
+<div class="card-header">
+    <h2>Maria</h2>  
+    <h2><i class="far fa-user"></i> Intern</h2>
+    <hr>
+</div>
+<div class="card-body">
+    <ul>
+        <li>ID: 3</li>
+        <li>Email: maria@gmail.com</li>
+        <li>School: UNCC </li>
+    </ul>
+</div>
+</div>
                 </div>
             </div>
         </div>
     </body>
     
-    </html>`;
-}
-
-//Renders the team cards
-function generateTeamCards(ans) {
-  let role;
-  if (ans.title === "Manager") {
-    role = `Office Number: ${ans.officeNumber}`;
-  } else if (ans.title === "Engineer") {
-    role = `Github Username: ${ans.github}`;
-  } else if (ans.title === "Intern") {
-    role = `School: ${ans.school}`;
-  }
-  return `
-  <div class="card">
-<div class="card-header">
-    <h2>${ans.name}</h2>  
-    <h2><i class="far fa-user"></i> ${ans.title}</h2>
-    <hr>
-</div>
-<div class="card-body">
-    <ul>
-        <li>ID: ${ans.id}</li>
-        <li>Email: ${ans.email}</li>
-        <li>${role} </li>
-    </ul>
-</div>
-</div>`;
-}
-
-// module.exports = generateProfileHTML;
-// module.exports = generateTeamCards;
-
-exports.generateProfileHTML = generateProfileHTML;
-exports.generateTeamCards = generateTeamCards;
+    </html>

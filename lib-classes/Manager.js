@@ -1,20 +1,16 @@
-class Manager {
-  constructor(name, id, email) {
-    this.name = name;
-    this.id = id;
-    this.email = email;
+//Manager class
+//It has access to Employee methods
+const Employee = require("./Employee");
+
+class Manager extends Employee {
+  constructor(name, id, email, officeNumber) {
+    super(name, id, email);
+    this.title = "Manager";
+    this.officeNumber = officeNumber;
   }
-  getName() {
-    return this.name;
-  }
-  getId() {
-    return this.id;
-  }
-  getEmail() {
-    return this.email;
-  }
-  getRole() {
-    return `Manager`;
+
+  getOfficeNumber() {
+    return this.officeNumber;
   }
 }
 
